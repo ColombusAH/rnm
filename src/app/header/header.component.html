@@ -1,8 +1,23 @@
-<header>
-    <!-- burger button -->
-    <button class="burger">
-        <span>-</span>
-        <span>-</span>
-        <span>-</span>
-    </button>
-</header>
+<div class="bg-gray-800 text-white p-4">
+    <div class="flex justify-between items-center">
+      <button class="lg:hidden" (click)="toggleSidebar()">
+        <i class="pi pi-bars"></i>
+      </button>
+      <span class="text-xl">MyApp</span>
+      <div class="hidden lg:flex space-x-4">
+        <a href="/" class="hover:underline">Home</a>
+        <a href="/about" class="hover:underline">About</a>
+      </div>
+      <div>
+        <ng-container *ngIf="isLoggedIn; else loginTemplate">
+          <i class="pi pi-user"></i>
+        </ng-container>
+        <ng-template #loginTemplate>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Login
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  

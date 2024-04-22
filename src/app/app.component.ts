@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { DIRECTION_TOKEN } from './app.config';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, TranslateModule],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent,TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
