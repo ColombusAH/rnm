@@ -1,13 +1,16 @@
 <div class="bg-gray-800 text-white p-4">
     <div class="flex justify-between items-center">
-      <button class="lg:hidden" (click)="toggleSidebar()">
+      <button  class="lg:hidden" (click)="toggleSidebar()">
         <i class="pi pi-bars"></i>
       </button>
-      <span class="text-xl">MyApp</span>
-      <div class="hidden lg:flex space-x-4">
-        <a href="/" class="hover:underline">Home</a>
-        <a href="/about" class="hover:underline">About</a>
+      <div>
+        <span class="text-xl">MyApp</span>
+        <app-toggle-lang [lang]="currentLang" class="mx-6" (click)="toggleLang()"></app-toggle-lang>
       </div>
+      <div class="hidden lg:flex space-x-4">
+        <a routerLink="/" class="hover:underline mx-1">{{'DASHBOARD' | translate}}</a>
+        <a [routerLink]="'clients'" class="hover:underline mx-1">{{'CLIENTS' | translate}}</a>
+      </div>    
       <div>
         <ng-container *ngIf="isLoggedIn; else loginTemplate">
           <i class="pi pi-user"></i>

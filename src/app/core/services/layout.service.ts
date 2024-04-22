@@ -8,6 +8,6 @@ export class LayoutService {
   private isSidebarCollapsed$ = signal(true);
   isSidebarCollapsed = this.isSidebarCollapsed$.asReadonly();
   toggleSidebar() {
-    this.isSidebarCollapsed$.set(!this.isSidebarCollapsed);
+    this.isSidebarCollapsed$.update( c => !c);
   }
 }
