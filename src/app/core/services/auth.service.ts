@@ -24,8 +24,17 @@ export class AuthService {
     localStorage.setItem('authToken', token);
   }
 
+  get isLoggedIn() {
+    return !!this.authToken()
+  }
+
 
   login(email: string, password: string) {
     return this.authApi.login(email, password);
   }
+
+  logout() {
+    this.authToken = '';
+  }
+
 }
