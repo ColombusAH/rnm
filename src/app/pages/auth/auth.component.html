@@ -2,16 +2,16 @@
     <div class="p-8 bg-white shadow-lg rounded-lg">
       <h2 class="text-2xl font-bold mb-6 text-center">{{ (isLoginMode() ? 'LOGIN' : 'REGISTER') | translate }}</h2>
       <form [formGroup]="form" class="space-y-4">
-        <div *ngIf="!isLoginMode()">
+        <div>
           <span class="p-float-label flex justify-end">
             <input id="email" formControlName="email" type="email" pInputText class="w-full" />
             <label  for="eamil">{{'EMAIL' | translate}}</label>
           </span>
         </div>
         <div>
-          <span class="p-float-label">
-            <input id="email" formControlName="username" type="text" pInputText class="w-full" />
-            <label for="username">{{ (isLoginMode() ? 'USERNAME' : 'CHOOSE_A_USERNAME') | translate }}</label>
+          <span *ngIf="!isLoginMode()" class="p-float-label">
+            <input id="username" formControlName="username" type="text" pInputText class="w-full" />
+            <label for="username">{{ 'CHOOSE_A_USERNAME'| translate }}</label>
           </span>
         </div>
         <div>

@@ -19,7 +19,6 @@ ClickOutsideDirective {
       }
       const targetElement = event.target as HTMLElement;
       // Check if the click was outside the element
-      console.log('targetElement', targetElement);
       if (targetElement && !this.elementRef.nativeElement.contains(targetElement)) {
         this.clickOutside.emit(event);
       }

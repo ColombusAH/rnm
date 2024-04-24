@@ -7,7 +7,7 @@
     "LOGIN": "Login",
     "REGISTER": "Register",
     "USERNAME": "Username",
-    "'CHOOSE_A_USERNAME'": "Choose a username",
+    "CHOOSE_A_USERNAME": "Choose a username",
     "PASSWORD": "Password",
     "CHOOSE_A_PASSWORD": "Choose a password",
     "NO_ACCOUNT_QUESTION": "Don\\'t have an account?",

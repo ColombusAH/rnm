@@ -15,8 +15,6 @@ export class SidebarComponent {
   isCollapsed = this.layoutService.isSidebarCollapsed;
 
   toggleSidebar() {
-    console.log('toggleSidebar');
-
       this.layoutService.toggleSidebar(); 
   }
 }

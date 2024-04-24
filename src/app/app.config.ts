@@ -13,7 +13,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 export const DIRECTION_TOKEN = new InjectionToken<string>('BodyDirection');
 //better name for this function is
 export function BodyDirection(translateService: TranslateService) {
-  console.log('BodyDirection');
   document.body.dir = 'rtl';
  translateService.onLangChange.subscribe((event) => {
     if (event.lang === 'he') {

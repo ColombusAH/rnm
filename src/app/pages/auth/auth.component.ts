@@ -3,11 +3,12 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,9 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class AuthComponent {
   formBuilder = inject(FormBuilder);
+  authService = inject(AuthService);
   route = inject(ActivatedRoute);
+  router = inject(Router);
   form = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -28,20 +31,23 @@ export class AuthComponent {
   isLoginMode = toSignal(this.route.url.pipe(map(url => url[0].path === 'login'), tap(isLogin => {
     if (isLogin) {
       this.form.get('confirmPassword')?.disable();
-      this.form.get('email')?.disable();
+      this.form.get('username')?.disable();
     } else {
       this.form.get('confirmPassword')?.enable();
-      this.form.get('email')?.enable();
+      this.form.get('username')?.enable();
     }
   })));
 
 
   onSubmit() {
-    console.log('onSubmit');
     if (this.form.invalid) {
       return;
     }
-    console.log(this.form.value);
+    const {email, password} = this.form.value as {email: string, password: string};
+    this.authService.login(email, password).subscribe(() => {
+      this.router.navigate(['']);
+    }
+  );
   }
 
 
