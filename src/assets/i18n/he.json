@@ -1,5 +1,16 @@
 {
     "Hello": "שלום",
     "CLIENTS": "לקוחות",
-    "DASHBOARD": "לוח בקרה"
+    "EMAIL": "אימייל",
+    "DASHBOARD": "לוח בקרה",
+    "EVENTS": "אירועים",
+    "LOGIN": "התחברות",
+    "REGISTER": "הרשמה",
+    "CHOOSE_A_USERNAME": "בחר שם משתמש",
+    "USERNAME": "שם משתמש",
+    "PASSWORD": "סיסמה",
+    "CHOOSE_A_PASSWORD": "בחר סיסמה",
+    "NO_ACCOUNT_QUESTION": "אין לך חשבון?",
+    "ACCOUNT_QUESTION": "יש לך חשבון?"
+
 }

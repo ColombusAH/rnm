@@ -10,14 +10,15 @@
       <div class="hidden lg:flex space-x-4">
         <a routerLink="/" class="hover:underline mx-1">{{'DASHBOARD' | translate}}</a>
         <a [routerLink]="'clients'" class="hover:underline mx-1">{{'CLIENTS' | translate}}</a>
+        <a [routerLink]="'events'" class="hover:underline mx-1">{{'EVENTS' | translate}}</a>
       </div>    
       <div>
         <ng-container *ngIf="isLoggedIn; else loginTemplate">
           <i class="pi pi-user"></i>
         </ng-container>
         <ng-template #loginTemplate>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Login
+          <button routerLink="login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            {{'LOGIN' | translate}}
           </button>
         </ng-template>
       </div>

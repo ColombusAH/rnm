@@ -2,8 +2,9 @@ import { ApplicationConfig, importProvidersFrom, InjectionToken } from '@angular
 import { provideRouter } from '@angular/router';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import { routes } from './app.routes';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { tokenInterceptor } from './core/interceptors';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -21,11 +22,12 @@ export function BodyDirection(translateService: TranslateService) {
       document.body.dir = 'ltr';
     }
   })
+  translateService.use('he');
 }
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(), importProvidersFrom(TranslateModule.forRoot(
+  providers: [provideRouter(routes),provideHttpClient(withInterceptors([tokenInterceptor])), importProvidersFrom(TranslateModule.forRoot(
     {
       defaultLanguage: 'he',
       loader: {
@@ -34,5 +36,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient]
       }
   },
-  )), {provide: DIRECTION_TOKEN, useFactory: BodyDirection, deps: [TranslateService]}]
+  )), {provide: DIRECTION_TOKEN, useFactory: BodyDirection, deps: [TranslateService]},
+],
+  
 }

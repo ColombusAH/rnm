@@ -1,5 +1,15 @@
 {
     "Hello": "Hello",
     "CLIENTS": "Clients",
-    "DASHBOARD": "Dashboard"
+    "EMAIL": "Email",
+    "DASHBOARD": "Dashboard",
+    "EVENTS": "Events",
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "USERNAME": "Username",
+    "'CHOOSE_A_USERNAME'": "Choose a username",
+    "PASSWORD": "Password",
+    "CHOOSE_A_PASSWORD": "Choose a password",
+    "NO_ACCOUNT_QUESTION": "Don\\'t have an account?",
+    "ACCOUNT_QUESTION":"Already have an account?"
 }

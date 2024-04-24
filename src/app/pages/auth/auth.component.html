@@ -1,0 +1,36 @@
+<div  class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="p-8 bg-white shadow-lg rounded-lg">
+      <h2 class="text-2xl font-bold mb-6 text-center">{{ (isLoginMode() ? 'LOGIN' : 'REGISTER') | translate }}</h2>
+      <form [formGroup]="form" class="space-y-4">
+        <div *ngIf="!isLoginMode()">
+          <span class="p-float-label flex justify-end">
+            <input id="email" formControlName="email" type="email" pInputText class="w-full" />
+            <label  for="eamil">{{'EMAIL' | translate}}</label>
+          </span>
+        </div>
+        <div>
+          <span class="p-float-label">
+            <input id="email" formControlName="username" type="text" pInputText class="w-full" />
+            <label for="username">{{ (isLoginMode() ? 'USERNAME' : 'CHOOSE_A_USERNAME') | translate }}</label>
+          </span>
+        </div>
+        <div>
+          <span class="p-float-label">
+            <input id="password" formControlName="password" type="password" pInputText class="w-full" />
+            <label for="password">{{ (isLoginMode() ? 'PASSWORD' : 'CHOOSE_A_PASSWORD') | translate }}</label>
+          </span>
+        </div>
+        <div>
+          <button pButton [disabled]="form.invalid" (click)="onSubmit()" type="button" label="{{ (isLoginMode() ? 'LOGIN' : 'REGISTER') | translate }}" class="w-full"></button>
+        </div>
+      </form>
+      <div class="text-center mt-4">
+        <p>{{ (isLoginMode() ? 'NO_ACCOUNT_QUESTION' : 'ACCOUNT_QUESTION') | translate }}
+          <a href="#" class="text-blue-600 hover:underline" routerLink="{{ isLoginMode() ? '/register' : '/login' }}">
+            {{ (isLoginMode() ? 'REGISTER' : 'LOGIN') | translate }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  
