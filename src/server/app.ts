@@ -68,10 +68,10 @@ app.use('/api/auth', authRouter);
 app.use(authMiddleware);
 app.use(api);
 
-app.use(express.static(path.join(__dirname, '../rnm/browser')));
+app.use(express.static(path.join(__dirname, '../../dist/rnm/browser')));
 app.get('/*', (req, res) => {
   res.sendFile(
-    path.join(__dirname, '../rnm/browser', 'index.html')
+    path.join(__dirname, '../../dist/rnm/browser', 'index.html')
   );
 });
 
