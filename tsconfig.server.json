@@ -8,5 +8,6 @@
       "skipLibCheck": true,
       "rootDir": "src"
     },
-    "include": ["src/server/index.ts"]
+    "include": ["src/server/index.ts"],
+    "exclude": ["node_modules"]
   }
