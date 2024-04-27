@@ -1,7 +1,8 @@
 import { Entity, Fields, Relations } from 'remult';
 
 @Entity('tenants', {
-    allowApiDelete: false,   
+    allowApiDelete: false,
+    allowApiRead: () => false,   
 })
 export class Tenant {
   @Fields.autoIncrement()

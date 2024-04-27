@@ -18,6 +18,7 @@ import { Client } from "./client.entity";
             id: -1
         };
     },
+    allowApiRead: () => remult.isAllowed('admin'),
     allowApiUpdate: () => remult.isAllowed('admin'),
     allowApiInsert: () => remult.isAllowed('admin'),
 })

@@ -21,6 +21,7 @@ import { tenantIdConverter } from "../converters";
     // allowApiRead: () => {
     //     console.log('remult.user', remult.user);
     //     return remult.authenticated();},
+    allowApiRead: () => remult.isAllowed('admin'),
     allowApiUpdate: () => remult.isAllowed('admin'),
     allowApiInsert: () => remult.isAllowed('admin'),
     // allowApiDelete: () => remult.isAllowed('admin'),
