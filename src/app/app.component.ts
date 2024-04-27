@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { DIRECTION_TOKEN } from './app.config';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClient } from '@angular/common/http';
+import { remult } from 'remult'
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 })
 export class AppComponent {
   bodyDirection = inject(DIRECTION_TOKEN);
+    httpClient = inject(HttpClient);
   title = 'rnm';
 
   isCollapsed = true;
+
+  constructor() {
+    remult.apiClient.httpClient = this.httpClient;
+  }
 }

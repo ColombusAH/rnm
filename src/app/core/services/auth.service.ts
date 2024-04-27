@@ -1,6 +1,5 @@
 import { inject, Injectable, Signal, signal } from '@angular/core';
 import { AuthApiService } from '../apis/auth-api.service';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

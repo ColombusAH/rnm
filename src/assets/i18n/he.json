@@ -11,6 +11,19 @@
     "PASSWORD": "סיסמה",
     "CHOOSE_A_PASSWORD": "בחר סיסמה",
     "NO_ACCOUNT_QUESTION": "אין לך חשבון?",
-    "ACCOUNT_QUESTION": "יש לך חשבון?"
+    "ACCOUNT_QUESTION": "יש לך חשבון?",
+    "CLIENTS_PAGE": {
+        "ID": "מזהה",
+        "FIRST_NAME": "שם פרטי",
+        "LAST_NAME": "שם משפחה",
+        "ADDRESS": "כתובת",
+        "POSTAL_CODE": "מיקוד",
+        "EMAIL": "אימייל",
+        "PHONE": "טלפון",
+        "NOTES": "הערות",
+        "ACTIONS": "פעולות",
+        "ADD_CLIENT": "הוסף לקוח",
+        "UPDATE_CLIENT": "עדכן לקוח"
+    }
 
 }

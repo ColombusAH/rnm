@@ -11,5 +11,19 @@
     "PASSWORD": "Password",
     "CHOOSE_A_PASSWORD": "Choose a password",
     "NO_ACCOUNT_QUESTION": "Don\\'t have an account?",
-    "ACCOUNT_QUESTION":"Already have an account?"
+    "ACCOUNT_QUESTION":"Already have an account?",
+    "CLIENTS_PAGE": {
+        "ID": "ID",
+        "FIRST_NAME": "First Name",
+        "LAST_NAME": "Last Name",
+        "ADDRESS": "Address",
+        "POSTAL_CODE": "Postal Code",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "NOTES":"Notes",
+        "ACTIONS": "Actions",
+        "ADD_CLIENT": "Add Client",
+        "UPDATE_CLIENT": "Update Client"
+
+    }
 }

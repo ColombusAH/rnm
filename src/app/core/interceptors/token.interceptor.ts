@@ -7,14 +7,14 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
 
   const authService = inject(AuthService);
 
-  const authToken = authService.authToken;
+  const authToken = authService.authToken();
 
   // Clone the request and add the authorization header
   const authReq = req.clone({
-    setHeaders: {
-      Authorization: `Bearer ${authToken}`
-    }
+   
+    headers: req.headers.set('authorization', `Bearer ${authToken}`)
   });
+  console.log('authReq', authToken);
 
   if(req.url.includes('auth/login')) {
     // If the request is a login request, don't add the authorization header

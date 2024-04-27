@@ -1,10 +1,12 @@
 import { ApplicationConfig, importProvidersFrom, InjectionToken } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import { routes } from './app.routes';
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { tokenInterceptor } from './core/interceptors';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +28,7 @@ export function BodyDirection(translateService: TranslateService) {
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(withInterceptors([tokenInterceptor])), importProvidersFrom(TranslateModule.forRoot(
+  providers: [provideRouter(routes),provideHttpClient(withInterceptors([tokenInterceptor])),   provideAnimations(),importProvidersFrom(TranslateModule.forRoot(
     {
       defaultLanguage: 'he',
       loader: {
