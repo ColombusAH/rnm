@@ -1,8 +1,7 @@
 import { Entity, Fields, Relations, remult, ValueConverter } from "remult";
 import { User } from "./user.entity";
 import { Tenant } from "./tenant.entity";
-
-const v : ValueConverter<number> ={ toDb: (v) => remult.user ? +`${(remult.user as any).tenantId}` : 0, fromDb: (v) => v};
+import { tenantIdConverter } from "../converters";
 
 @Entity('clients', {
     apiPrefilter: () => {
@@ -31,7 +30,7 @@ export class Client {
     id = 0;
 
     @Fields.number({ allowApiUpdate: true,
-        valueConverter: v,
+        valueConverter: tenantIdConverter,
     })
     tenantId = 0;
 

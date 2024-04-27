@@ -1,4 +1,4 @@
-import { inject, Injectable, Signal, signal } from '@angular/core';
+import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { AuthApiService } from '../apis/auth-api.service';
 
 @Injectable({
@@ -6,6 +6,8 @@ import { AuthApiService } from '../apis/auth-api.service';
 })
 export class AuthService {
   private _authToken = signal('');
+ isLoggedIn = computed(() => !!this._authToken() );
+
 
   authApi = inject(AuthApiService);
 
@@ -22,11 +24,6 @@ export class AuthService {
     // save token to storage
     localStorage.setItem('authToken', token);
   }
-
-  get isLoggedIn() {
-    return !!this.authToken()
-  }
-
 
   login(email: string, password: string) {
     return this.authApi.login(email, password);

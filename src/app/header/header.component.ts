@@ -4,6 +4,7 @@ import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ToggleLangComponent } from '../components/toggle-lang/toggle-lang.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class HeaderComponent {
   layoutService = inject(LayoutService);
   translateService = inject(TranslateService);
-  isLoggedIn = false;
+
+  isLoggedIn = inject(AuthService).isLoggedIn
   currentLang = this.translateService.currentLang;
 
 
