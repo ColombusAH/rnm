@@ -75,4 +75,4 @@ app.get('/*', (req, res) => {
   );
 });
 
-export  {app};
+export  { app };
