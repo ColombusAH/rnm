@@ -15,6 +15,7 @@
     "NAVIGATION_LINKS": {
         "HOME": "Home",
         "CLIENTS": "Clients",
+        "LEADS": "Leads",
         "EVENTS": "Events",
         "LOGIN": "Login",
         "REGISTER": "Register",

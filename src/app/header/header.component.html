@@ -9,8 +9,9 @@
       </div>
       <div class="hidden lg:flex space-x-4">
         <a routerLink="/" class="hover:underline mx-1">{{'DASHBOARD' | translate}}</a>
-        <a [routerLink]="'clients'" class="hover:underline mx-1">{{'CLIENTS' | translate}}</a>
-        <a [routerLink]="'events'" class="hover:underline mx-1">{{'EVENTS' | translate}}</a>
+        <a [routerLink]="'clients'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.CLIENTS' | translate}}</a>
+        <a [routerLink]="'events'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.EVENTS' | translate}}</a>
+        <a [routerLink]="'leads'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.LEADS' | translate}}</a>
       </div>    
       <div>
         <ng-container *ngIf="isLoggedIn; else loginTemplate">
