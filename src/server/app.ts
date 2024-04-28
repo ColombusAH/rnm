@@ -63,7 +63,7 @@ const openApiDocument = api.openApiDoc({ title: "remult-react-todo" });
 
   
 
-app.use('/api/auth', authRouter);
+app.use('/api/auth',api.withRemult, authRouter);
 
 app.use(authMiddleware);
 app.use(api);

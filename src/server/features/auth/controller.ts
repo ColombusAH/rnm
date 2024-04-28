@@ -1,11 +1,23 @@
 import { Request, Response } from 'express';
 import AuthService from './service';
+import { remult } from 'remult';
+import { Tenant } from '../../../shared/entities';
 
 export class AuthController {
     static async register(req: Request, res: Response) {
         try {
             const { username, email,password } = req.body;
-            const user = await AuthService.register(username, email, password);
+            const tenantRepo = remult.repo(Tenant);
+            //find tenant by email
+            const tenant = await tenantRepo.findOne({ where: {email: email} });
+            if (tenant) {
+                throw new Error('Creds error');
+            }
+            const newTenant = await tenantRepo.insert({email: email,name: username});
+            if (!newTenant) {
+                throw new Error('creation : Creds error');
+            }
+            const user = await AuthService.register(username, email, password, newTenant.id);
             res.status(201).json(user);
         } catch (error: any) {
             console.log(error);

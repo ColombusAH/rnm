@@ -1,9 +1,9 @@
 import { pool } from "../../db/pool";
 
 class UserRepository {
-    static async createUser(username: string, email: string,password: string) {
-        const query = 'INSERT INTO users(username, email, password) VALUES($1, $2, $3) RETURNING *;';
-        const values = [username, email, password];
+    static async createUser(username: string, email: string,password: string, tenantId: number) {
+        const query = 'INSERT INTO users(username, email, password,tenantId) VALUES($1, $2, $3, $4) RETURNING *;';
+        const values = [username, email, password, tenantId];
         const { rows } = await pool.query(query, values);
         return rows[0];
     }

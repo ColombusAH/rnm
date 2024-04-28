@@ -3,10 +3,10 @@ import jwt from 'jsonwebtoken';
 import UserRepository from './repo';
 
 class AuthService {
-    static async register(username: string, email:string,password: string) {
+    static async register(username: string, email:string,password: string, tenant_id: number) {
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log(hashedPassword);
-        return UserRepository.createUser(username, email,hashedPassword);
+        return UserRepository.createUser(username, email,hashedPassword, tenant_id);
     }
 
     static async login(email: string, password: string) {
