@@ -2,8 +2,8 @@
     <span> {{isCollapsed()}}</span>
 <div class="bg-gray-900 text-white w-64 h-full absolute inset-y-0 left-0 transform -translate-x-full lg:hidden">
   <div class="p-5">
-    <a (click)="toggleSidebar()" class="block py-2 hover:underline">Home</a>
-    <a (click)="toggleSidebar()" class="block py-2 hover:underline">About</a>
+    <a (click)="toggleSidebar()" routerLink="/" class="block py-2 hover:underline">Home</a>
+    <a (click)="toggleSidebar()" routerLink="clients" class="block py-2 hover:underline">clients</a>
   </div>
 </div>
 </ng-container>

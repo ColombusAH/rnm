@@ -14,10 +14,11 @@ export class AuthController {
                 throw new Error('Creds error');
             }
             const newTenant = await tenantRepo.insert({email: email,name: username});
+            console.log(newTenant);
             if (!newTenant) {
                 throw new Error('creation : Creds error');
             }
-            const user = await AuthService.register(username, email, password, newTenant.id);
+            const user = await AuthService.register(username, email, password, newTenant.id, ['admin']);
             res.status(201).json(user);
         } catch (error: any) {
             console.log(error);

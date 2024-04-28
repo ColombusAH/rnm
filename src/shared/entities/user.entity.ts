@@ -1,7 +1,21 @@
-import { Entity, Fields, Relations } from "remult";
+import { Entity, Fields, Relations, remult } from "remult";
 import { Tenant } from "./tenant.entity";
 
 @Entity('users', {
+  apiPrefilter: () => {
+    console.log('remult.user', remult.user);
+    if (remult.isAllowed('admin')) {
+        console.log('remult.user is admin');
+        return {
+            tenantId: (remult.user as any)!.tenantId
+        };
+    }
+    console.log('remult.user is not admin');
+    return {
+        tenantId: -1,
+        id: -1
+    };
+},
 
 })
 export class User {
@@ -21,8 +35,8 @@ export class User {
   password = '';
 
  @Fields.json({ 
-    defaultValue: () => [],
-    validate: RolesArrayValidation,
+    defaultValue: () => ['user'],
+    // validate: RolesArrayValidation,
   })
   roles: string[] = [];
 

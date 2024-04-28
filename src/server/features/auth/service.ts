@@ -1,12 +1,20 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import UserRepository from './repo';
+import { remult } from 'remult';
+import { User } from '../../../shared/entities';
 
 class AuthService {
-    static async register(username: string, email:string,password: string, tenant_id: number) {
+    static async register(username: string, email:string,password: string, tenant_id: number, roles: string[] = ['user']) {
         const hashedPassword = await bcrypt.hash(password, 10);
-        console.log(hashedPassword);
-        return UserRepository.createUser(username, email,hashedPassword, tenant_id);
+        const userRepo = remult.repo(User);
+        const user = await userRepo.findOne({ where: {email: email} });
+        if (user) {
+            throw new Error('User already exists');
+        }
+       return userRepo.insert({username: username, email: email, password: hashedPassword, tenantId: tenant_id, roles: roles});
+        // console.log(hashedPassword);
+        // return UserRepository.createUser(username, email,hashedPassword, tenant_id);
     }
 
     static async login(email: string, password: string) {
