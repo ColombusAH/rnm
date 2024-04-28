@@ -28,6 +28,9 @@ export class AuthService {
   login(email: string, password: string) {
     return this.authApi.login(email, password);
   }
+  register(creds: { email: string, password: string, username: string }) {
+    return this.authApi.register(creds);
+  }
 
   logout() {
     this.authToken = '';

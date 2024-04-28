@@ -43,12 +43,18 @@ export class AuthComponent {
     if (this.form.invalid) {
       return;
     }
+    if(this.isLoginMode()) { 
     const {email, password} = this.form.value as {email: string, password: string};
     this.authService.login(email, password).subscribe(() => {
       this.router.navigate(['']);
     }
-  );
+    );
+  } else {
+    const {email, password, username} = this.form.value as {email: string, password: string, username: string};
+    this.authService.register({email, password, username}).subscribe(() => {
+      this.router.navigate(['login']);
+    });
   }
-
+}
 
 }

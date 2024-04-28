@@ -16,4 +16,8 @@ export class AuthApiService {
   login(email: string, password: string) {
     return this.http.post(`${this.baseUrl}/auth/login`, {email, password});
   }
+
+  register(creds: { email: string, password: string, username: string }) {
+    return this.http.post(`${this.baseUrl}/auth/signup`, creds);
+  }
 }
