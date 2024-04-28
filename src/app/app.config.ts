@@ -6,6 +6,9 @@ import { routes } from './app.routes';
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { tokenInterceptor } from './core/interceptors';
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
+import localHe from '@angular/common/locales/he';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -15,19 +18,27 @@ export function HttpLoaderFactory(http: HttpClient) {
 export const DIRECTION_TOKEN = new InjectionToken<string>('BodyDirection');
 //better name for this function is
 export function BodyDirection(translateService: TranslateService) {
+
   console.log('BodyDirection');
-  document.body.dir = 'rtl';
-  const direction = signal('rtl');
+  registerLocaleData(localeEn);
+  registerLocaleData(localHe);
+  const prefLang = localStorage.getItem('lang') || 'he';
+  // const langDirection = prefLang === 'he' ? 'rtl' : 'ltr';
+
+  // document.body.dir = langDirection;
+  const direction = signal('');
  translateService.onLangChange.subscribe((event) => {
     if (event.lang === 'he') {
       document.body.dir = 'rtl';
+      localStorage.setItem('lang', 'he');
       direction.update(() => 'rtl');
     } else {
       document.body.dir = 'ltr';
+      localStorage.setItem('lang', 'en');
       direction.update(() => 'ltr');
     }
   })
-  translateService.use('he');
+  translateService.use(prefLang);
   return direction.asReadonly();
 }
 

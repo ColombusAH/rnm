@@ -63,5 +63,5 @@ export class Lead {
     isAllDay = false;
 
     @Fields.string()
-    note: string = '';
+    notes: string = '';
 }

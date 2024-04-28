@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { remult } from 'remult';
 import { Client } from '../../../shared/entities/client.entity';
@@ -8,8 +7,6 @@ import { Client } from '../../../shared/entities/client.entity';
   providedIn: 'root'
 })
 export class ClientsApiService {
-
-  http = inject(HttpClient);
   baseUrl = environment.baseUrl;
   clientRepo = remult.repo(Client);
   

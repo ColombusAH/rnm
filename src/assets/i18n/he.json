@@ -33,6 +33,17 @@
         "ACTIONS": "פעולות",
         "ADD_CLIENT": "הוסף לקוח",
         "UPDATE_CLIENT": "עדכן לקוח"
+    },
+    "LEADS_PAGE": {
+        "NAME": "שם",
+        "JOB_TYPE": "סוג עבודה",
+        "SOURCE": "מקור",
+        "LOCATION": "מיקום",
+        "FROM_DATE": "מתאריך",
+        "TO_DATE": "עד תאריך",
+        "NOTES": "הערות",
+        "ACTIONS": "פעולות",
+        "ADD_LEAD": "הוסף ליד"
     }
 
 }

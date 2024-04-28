@@ -34,5 +34,16 @@
         "ADD_CLIENT": "Add Client",
         "UPDATE_CLIENT": "Update Client"
 
+    },
+    "LEADS_PAGE": {
+        "NAME": "Name",
+        "JOB_TYPE": "Job Type",
+        "SOURCE": "Source",
+        "LOCATION": "Location",
+        "FROM_DATE": "From Date",
+        "TO_DATE": "To Date",
+        "NOTES": "Notes",
+        "ACTIONS": "Actions",
+        "ADD_LEAD": "Add Lead"
     }
 }
