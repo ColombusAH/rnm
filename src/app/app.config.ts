@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, InjectionToken } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, InjectionToken, signal } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
@@ -15,15 +15,20 @@ export function HttpLoaderFactory(http: HttpClient) {
 export const DIRECTION_TOKEN = new InjectionToken<string>('BodyDirection');
 //better name for this function is
 export function BodyDirection(translateService: TranslateService) {
+  console.log('BodyDirection');
   document.body.dir = 'rtl';
+  const direction = signal('rtl');
  translateService.onLangChange.subscribe((event) => {
     if (event.lang === 'he') {
       document.body.dir = 'rtl';
+      direction.update(() => 'rtl');
     } else {
       document.body.dir = 'ltr';
+      direction.update(() => 'ltr');
     }
   })
   translateService.use('he');
+  return direction.asReadonly();
 }
 
 

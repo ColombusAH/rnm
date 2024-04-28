@@ -1,9 +1,12 @@
 <ng-container *ngIf="isCollapsed() === false">
-    <span> {{isCollapsed()}}</span>
-<div class="bg-gray-900 text-white w-64 h-full absolute inset-y-0 left-0 transform -translate-x-full lg:hidden">
-  <div class="p-5">
-    <a (click)="toggleSidebar()" routerLink="/" class="block py-2 hover:underline">Home</a>
-    <a (click)="toggleSidebar()" routerLink="clients" class="block py-2 hover:underline">clients</a>
+  <div class="bg-gray-900 text-white w-64 h-full absolute inset-y-0 transform z-10"
+       [ngClass]="{
+         'left-0 -translate-x-full lg:hidden': currentBodyDirection === 'ltr',
+         'right-0 translate-x-full lg:hidden': currentBodyDirection === 'rtl',
+       }">
+    <div class="p-5">
+      <a (click)="toggleSidebar()" routerLink="/" class="block py-2 hover:underline">{{'NAVIGATION_LINKS.HOME' | translate}}</a>
+      <a (click)="toggleSidebar()" routerLink="clients" class="block py-2 hover:underline">{{'NAVIGATION_LINKS.CLIENTS' | translate}}</a>
+    </div>
   </div>
-</div>
 </ng-container>

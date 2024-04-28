@@ -12,6 +12,14 @@
     "CHOOSE_A_PASSWORD": "בחר סיסמה",
     "NO_ACCOUNT_QUESTION": "אין לך חשבון?",
     "ACCOUNT_QUESTION": "יש לך חשבון?",
+    "NAVIGATION_LINKS": {
+        "HOME": "בית",
+        "CLIENTS": "לקוחות",
+        "EVENTS": "אירועים",
+        "LOGIN": "התחברות",
+        "REGISTER": "הרשמה",
+        "LOGOUT": "התנתקות"
+    },
     "CLIENTS_PAGE": {
         "ID": "מזהה",
         "FIRST_NAME": "שם פרטי",

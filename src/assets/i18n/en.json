@@ -12,6 +12,14 @@
     "CHOOSE_A_PASSWORD": "Choose a password",
     "NO_ACCOUNT_QUESTION": "Don\\'t have an account?",
     "ACCOUNT_QUESTION":"Already have an account?",
+    "NAVIGATION_LINKS": {
+        "HOME": "Home",
+        "CLIENTS": "Clients",
+        "EVENTS": "Events",
+        "LOGIN": "Login",
+        "REGISTER": "Register",
+        "LOGOUT": "Logout"
+    },
     "CLIENTS_PAGE": {
         "ID": "ID",
         "FIRST_NAME": "First Name",
