@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { remult } from 'remult';
 import { Lead } from '../../../shared/entities';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +9,24 @@ import { Lead } from '../../../shared/entities';
 export class LeadsApiService {
 
   leadRepo = remult.repo(Lead);
+  messageService = inject(MessageService);
   
   getLeads() {
     const leads = this.leadRepo.find();
     return leads;
   }
 
-  editLead(lead: Lead) {
+ async  editLead(lead: Lead) {
     const { tenantId, tenant, ...rest } = lead;
     if (!rest.id) {
       console.log('insert')
-      return this.leadRepo.insert(rest);
+      const response = await this.leadRepo.insert(rest);
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Lead Created' });
+      return response
     }
-    console.log('save');
-    return this.leadRepo.save(rest);
+    const response = await this.leadRepo.save(rest);
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Lead Updated' });
+    return response;
   }
 
 

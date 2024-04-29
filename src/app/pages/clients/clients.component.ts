@@ -46,12 +46,12 @@ export class ClientsComponent implements OnInit {
   async onEditClient($event: Client) {
     console.log('$event', $event);
    const res = await  this.clientService.editClient($event);
-   console.log('[onEditClient]');
-   console.log('res', res);
+   this.selectedClient = null;
+    this.displayDialog = false;
   }
 
   confirmDelete(arg0: any) {
-    throw new Error('Method not implemented.');
+    console.log('confirmDelete', arg0);
   }
 
 

@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { remult } from 'remult';
 import { Client } from '../../../shared/entities/client.entity';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +10,23 @@ import { Client } from '../../../shared/entities/client.entity';
 export class ClientsApiService {
   baseUrl = environment.baseUrl;
   clientRepo = remult.repo(Client);
+  messageService = inject(MessageService);
   
   getClients() {
     const clients = this.clientRepo.find();
     return clients;
   }
 
-  editClient(client: Client) {
+  async editClient(client: Client) {
     const { tenantId, tenant, ...rest } = client;
     if (!rest.id) {
       console.log('insert')
-      return this.clientRepo.insert(rest);
+      const response = await this.clientRepo.insert(rest);
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Client Created' });
+      return response
     }
-    console.log('save');
-    return this.clientRepo.save(rest);
+    const response = await this.clientRepo.save(rest);
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Client Updated' });
+    return response;
   }
 }

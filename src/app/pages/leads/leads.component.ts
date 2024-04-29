@@ -34,18 +34,18 @@ export class LeadsComponent implements OnInit {
     console.log('this.leads', this.leads);
   }
 
-  async onEditLead($event: Lead) {
+  protected async onEditLead($event: Lead) {
     console.log('$event', $event);
     const res = await this.leadsService.editLead($event);
-    console.log('[onEditLead]');
-    console.log('res', res);
+    this.selectedLead = null;
+    this.displayDialog = false;
   }
 
-  confirmDelete(arg0: any) {
-    throw new Error('Method not implemented.');
+  protected confirmDelete(arg0: any) {
+    console.log('confirmDelete', arg0);
   }
 
-  showEditDialog(lead: Lead) {
+  protected showEditDialog(lead: Lead) {
     this.selectedLead = lead;
     this.displayDialog = true;
   }
