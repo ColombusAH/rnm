@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom, InjectionToken, signal } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, InjectionToken, LOCALE_ID, Signal, signal } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
@@ -54,6 +54,14 @@ export const appConfig: ApplicationConfig = {
       }
   },
   )), {provide: DIRECTION_TOKEN, useFactory: BodyDirection, deps: [TranslateService]},
+  {
+    provide: LOCALE_ID,
+   
+    useFactory: ( ) => {
+      const lang = localStorage.getItem('lang') || 'he';
+      return lang === 'he' ? 'he-IL' : 'en-US';
+  }
+  }
 ],
   
 }

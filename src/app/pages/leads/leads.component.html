@@ -24,7 +24,7 @@
           <td>{{ lead.jobType }}</td>
           <td>{{ lead.source }}</td>
           <td>{{ lead.location }}</td>
-          <td>{{ lead.fromDate | date : 'd/M/y h:mm a' }}</td>
+          <td>{{ lead.fromDate | date: 'd/M/y h:mm a' }}</td>
           <td>{{ lead.toDate | date: 'd/M/y h:mm a' }}</td>
           <td>{{ lead.notes }}</td>
           <td>
@@ -35,8 +35,8 @@
       </ng-template>
     </p-table>
   
-    <p-dialog header="Lead Details" [(visible)]="displayDialog" (onHide)="selectedLead = null" [modal]="true" [style]="{width: '50vw', 'min-width': '24rem'}">
-        
+    <p-dialog header="{{'LEADS_PAGE.EDIT_TITLE' | translate}}" [(visible)]="displayDialog" (onHide)="selectedLead = null" [modal]="true" [style]="{width: '50vw', 'min-width': '24rem'}">
+      <app-edit-lead [lead]="selectedLead" (editLead)="onEditLead($event)"></app-edit-lead>
     </p-dialog>
   </div>
   

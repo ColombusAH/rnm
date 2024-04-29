@@ -35,6 +35,7 @@
         "UPDATE_CLIENT": "עדכן לקוח"
     },
     "LEADS_PAGE": {
+        "EDIT_TITLE": "פרטי ליד",
         "NAME": "שם",
         "JOB_TYPE": "סוג עבודה",
         "SOURCE": "מקור",
@@ -43,7 +44,11 @@
         "TO_DATE": "עד תאריך",
         "NOTES": "הערות",
         "ACTIONS": "פעולות",
-        "ADD_LEAD": "הוסף ליד"
+        "ADD_LEAD": "הוסף ליד",
+        "SAVE_EDIT": "שמור",
+        "CANCEL_EDIT": "ביטול",
+        "UPDATE_LEAD": "עדכן ליד"
+
     }
 
 }

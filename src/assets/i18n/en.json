@@ -36,6 +36,7 @@
 
     },
     "LEADS_PAGE": {
+        "EDIT_TITLE": "Edit Details",
         "NAME": "Name",
         "JOB_TYPE": "Job Type",
         "SOURCE": "Source",
@@ -44,6 +45,9 @@
         "TO_DATE": "To Date",
         "NOTES": "Notes",
         "ACTIONS": "Actions",
-        "ADD_LEAD": "Add Lead"
+        "ADD_LEAD": "Add Lead",
+        "SAVE_EDIT": "Save",
+        "CANCEL_EDIT": "Cancel",
+        "UPDATE_LEAD": "Update Lead"
     }
 }
