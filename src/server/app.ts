@@ -73,7 +73,7 @@ app.get('/api/me', (req, res) => {
   if (!req.user) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
-  res.json(req.user.name);
+  return res.json(req.user.name);
 });
 
 app.use(express.static(path.join(__dirname, '../rnm/browser')));
