@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { remult } from 'remult';
 import { Lead } from '../../../shared/entities';
 import { MessageService } from 'primeng/api';
@@ -10,11 +10,16 @@ export class LeadsApiService {
 
   leadRepo = remult.repo(Lead);
   messageService = inject(MessageService);
-  
-  getLeads() {
-    const leads = this.leadRepo.find();
-    return leads;
-  }
+  private _leads = signal<Lead[]>([]);
+  leads = this._leads.asReadonly();
+
+  constructor() {
+    this.leadRepo.liveQuery().subscribe((data) =>{
+      console.log('data', data);
+      const {items} = data;
+      this._leads.update(() =>items);
+    });
+   }
 
  async  editLead(lead: Lead) {
     const { tenantId, tenant, ...rest } = lead;

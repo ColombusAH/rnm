@@ -25,13 +25,13 @@ import { EditLeadComponent } from './edit-lead/edit-lead.component';
 export class LeadsComponent implements OnInit {
 
   leadsService = inject(LeadsApiService);
-  leads: Lead[] = [];
+  leads = this.leadsService.leads;
   displayDialog: boolean = false;
   selectedLead: Lead | null = null;
 
   async ngOnInit() {
-    this.leads = await this.leadsService.getLeads();
-    console.log('this.leads', this.leads);
+   
+    console.log('this.leads', this.leads());
   }
 
   protected async onEditLead($event: Lead) {

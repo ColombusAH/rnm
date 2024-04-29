@@ -5,7 +5,7 @@
             <span class="ml-2">{{'LEADS_PAGE.ADD_LEAD' | translate}}</span>
           </button>
     </div>
-    <p-table dataKey="id" [value]="leads">
+    <p-table dataKey="id" [value]="leads()">
       <ng-template pTemplate="header">
         <tr>
           <th>{{'LEADS_PAGE.NAME' | translate}}</th>
