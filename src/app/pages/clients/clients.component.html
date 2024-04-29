@@ -33,7 +33,7 @@
       </ng-template>
     </p-table>
   
-    <p-dialog header="Client Details" [(visible)]="displayDialog" (onHide)="selectedClient = null" [modal]="true" [style]="{width: '50vw'}">
+    <p-dialog header="Client Details" [(visible)]="displayDialog" (onHide)="selectedClient = null" [modal]="true" [style]="{width: '50vw', 'min-width': '24rem'}">
         <app-edit-client (editClient)="onEditClient($event)" [client]="selectedClient"></app-edit-client>
     </p-dialog>
   </div>

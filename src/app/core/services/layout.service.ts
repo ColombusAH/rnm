@@ -11,4 +11,8 @@ export class LayoutService {
   toggleSidebar() {
     this.isSidebarCollapsed$.update( c => !c);
   }
+
+  collapseSidebar() {
+    this.isSidebarCollapsed$.update(() => true);
+  }
 }

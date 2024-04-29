@@ -62,11 +62,19 @@ const openApiDocument = api.openApiDoc({ title: "remult-react-todo" });
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   
-
 app.use('/api/auth',api.withRemult, authRouter);
 
 app.use(authMiddleware);
 app.use(api);
+
+app.get('/api/me', (req, res) => {
+  console.log('req.user', req.user);
+  // res.json(req.user?.name);
+  if (!req.user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  res.json(req.user.name);
+});
 
 app.use(express.static(path.join(__dirname, '../rnm/browser')));
 app.get('/*', (req, res) => {
