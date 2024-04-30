@@ -1,10 +1,12 @@
 import { Entity, Fields, Relations, remult } from "remult";
-import { Tenant } from "./tenant.entity";
-import { tenantIdConverter } from "../converters";
+import { tenantIdConverter } from "../converters/tenant-id.converter";
+import { Tenant } from "./tenant.entity";;
+import { Lead } from "./lead.entity";
 import { Client } from "./client.entity";
-import { LeadSource, LeadStatus } from "../enums/lead-source.enums";
+import { EventStatus } from "../enums/events.enums";
+import { EventService } from "./event-service.entity";
 
-@Entity('leads', {
+@Entity('events', {
     apiPrefilter: () => {
         console.log('remult.user', remult.user);
         if (remult.isAllowed('admin')) {
@@ -19,13 +21,19 @@ import { LeadSource, LeadStatus } from "../enums/lead-source.enums";
             id: -1
         };
     },
-    allowApiRead: () => remult.isAllowed('admin'),
+    allowApiRead: () => remult.isAllowed(['admin', 'user']),
     allowApiUpdate: () => remult.isAllowed('admin'),
     allowApiInsert: () => remult.isAllowed('admin'),
 })
-export class Lead {
+export class Event {
     @Fields.autoIncrement()
     id = 0;
+
+    @Fields.string()
+    name = '';
+
+    @Fields.string()
+    description = '';
 
     @Fields.number({ valueConverter: tenantIdConverter })
     tenantId = 0;
@@ -33,39 +41,37 @@ export class Lead {
     @Relations.toOne(() => Tenant, 'tenantId')
     tenant!: Tenant;
 
-    @Fields.number()
+    @Fields.number({required: true})
     clientId = 0;
 
     @Relations.toOne(() => Client, 'clientId')
     client!: Client;
 
-    @Fields.string()
-    name = '';
+    @Fields.number({})
+    leadId = 0;
+
+    @Relations.toOne(() => Lead, 'leadId')
+    lead!: Lead;
+
+    @Relations.toMany(() => EventService)
+    services!: EventService[];
+
+    @Fields.enum(() => EventStatus)
+    status = EventStatus.Pending;
 
     @Fields.string()
-    jobType = '';
+    type = '';
 
-    @Fields.enum(() => LeadSource, {required: true})
-    source = '';
+    @Fields.date()
+    fromDate = new Date();
+
+    @Fields.date()
+    toDate = new Date();
+
+    @Fields.string()
+    notes = '';
 
     @Fields.string()
     location = '';
 
-    @Fields.enum(() => LeadStatus)
-    status = LeadStatus.New;
-
-    // @Fields.number()
-    // workflowId = 0;
-
-    @Fields.date()
-    fromDate?: Date;
-
-    @Fields.date()
-    toDate?: Date;
-
-    @Fields.boolean()
-    isAllDay = false;
-
-    @Fields.string()
-    notes: string = '';
 }

@@ -1,5 +1,4 @@
-import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { inject, Injectable, signal } from '@angular/core';
 import { remult } from 'remult';
 import { Client } from '../../../shared/entities/client.entity';
 import { MessageService } from 'primeng/api';
@@ -8,9 +7,19 @@ import { MessageService } from 'primeng/api';
   providedIn: 'root'
 })
 export class ClientsApiService {
-  baseUrl = environment.baseUrl;
+  private _clients = signal<Client[]>([]);
   clientRepo = remult.repo(Client);
   messageService = inject(MessageService);
+  clients = this._clients.asReadonly();
+
+  constructor() {
+    this.clientRepo.liveQuery().subscribe((data) =>{
+      console.log('data', data);
+      const {items} = data;
+      this._clients.update(() =>items);
+    });
+   }
+
   
   getClients() {
     const clients = this.clientRepo.find();

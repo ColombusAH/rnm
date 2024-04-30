@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, signal, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
@@ -24,6 +24,7 @@ export class EditClientComponent implements OnChanges,  OnInit {
 
   fb = inject(FormBuilder);
   addClientForm:FormGroup | null = null;
+  isDisabled = signal<boolean>(false);
 
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,6 +43,7 @@ export class EditClientComponent implements OnChanges,  OnInit {
     console.log(this.addClientForm?.value);
     if (this.addClientForm?.valid) {
       this.editClient.emit(this.addClientForm?.value);
+      this.isDisabled.update(()=> true);
     }
   }
 

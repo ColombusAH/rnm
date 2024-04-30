@@ -49,5 +49,21 @@
         "SAVE_EDIT": "Save",
         "CANCEL_EDIT": "Cancel",
         "UPDATE_LEAD": "Update Lead"
+    },
+    "EVENTS_PAGE": {
+        "ID": "ID",
+        "NAME": "Name",
+        "DESCRIPTION": "Description",
+        "JOB_TYPE": "Job Type",
+        "SOURCE": "Source",
+        "STATUS": "Status",
+        "LOCATION": "Location",
+        "FROM_DATE": "From Date",
+        "TO_DATE": "To Date",
+        "NOTES": "Notes",
+        "ACTIONS": "Actions",
+        "ADD_EVENT": "Add Event",
+        "UPDATE_EVENT": "Update Event",
+        "EDIT_TITLE": "Edit Details"
     }
 }

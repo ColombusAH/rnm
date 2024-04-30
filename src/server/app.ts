@@ -11,7 +11,7 @@ import cors from 'cors';
 import { sendEventsToAll, sseRouter } from "./sse/events-handler";
 import { remultExpress } from 'remult/remult-express';
 import { createPostgresDataProvider } from "remult/postgres"
-import { Tenant, User, Client, Lead } from "../shared/entities";
+import { Tenant, User, Client, Lead, Service, Event, EventService } from "../shared/entities";
 
 
 const connectionString = 'postgresql://admin:admin123@localhost:5432/rickmortydb';
@@ -51,7 +51,7 @@ const api  = remultExpress({
    : undefined,
   // dataProvider: new SqlDatabase(new PostgresDataProvider(pool)), 
   
-  entities: [Tenant, User, Client, Lead] 
+  entities: [Tenant, User, Client, Lead, Service, Event, EventService],
 })
 // const swaggerSpec = swaggerJsdoc(options);
 

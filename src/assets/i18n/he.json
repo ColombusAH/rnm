@@ -49,6 +49,22 @@
         "CANCEL_EDIT": "ביטול",
         "UPDATE_LEAD": "עדכן ליד"
 
+    },
+    "EVENTS_PAGE": {
+        "ID": "מזהה",
+        "NAME": "שם",
+        "DESCRIPTION": "תיאור",
+        "JOB_TYPE": "סוג עבודה",
+        "SOURCE": "מקור",
+        "STATUS": "סטטוס",
+        "LOCATION": "מיקום",
+        "FROM_DATE": "מתאריך",
+        "TO_DATE": "עד תאריך",
+        "NOTES": "הערות",
+        "ACTIONS": "פעולות",
+        "ADD_EVENT": "הוסף אירוע",
+        "UPDATE_EVENT": "עדכן אירוע",
+        "EDIT_TITLE": "פרטי אירוע"
     }
 
 }

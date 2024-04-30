@@ -57,7 +57,7 @@
     </div>
   
     <div class="flex items-center justify-between">
-      <button pButton type="submit" [disabled]="addClientForm.invalid" [label]="client ? 'Update Client': 'Add Client'" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></button>
+      <button pButton type="submit" [disabled]="addClientForm.invalid || isDisabled()" [label]="client ? 'Update Client': 'Add Client'" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></button>
     </div>
 </form>
 </ng-container>

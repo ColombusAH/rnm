@@ -4,8 +4,6 @@ import { Client } from '../../../shared/entities/client.entity';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -17,8 +15,6 @@ import { TranslateModule } from '@ngx-translate/core';
     TableModule,
     DialogModule,
     ButtonModule,
-    InputTextModule,
-    FormsModule,
     TranslateModule
   ],
   templateUrl: './clients.component.html',
@@ -27,33 +23,27 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ClientsComponent implements OnInit {
 
   clientService = inject(ClientsApiService);
-  clients: Client[] = [];
+  clients = this.clientService.clients;
   selectedClient: Client | null = null;
   displayDialog: boolean = false;
 
   async ngOnInit(): Promise<void> {
-    this.clients = await this.clientService.getClients();
-    console.log('this.clients', this.clients);
+    console.log('this.clients', this.clients());
   }
 
   showEditDialog(client: Client) {
-    console.log('showEditDialog');
-    console.log('client', client);
     this.selectedClient = { ...client };
     this.displayDialog = true;
   }
 
   async onEditClient($event: Client) {
-    console.log('$event', $event);
-   const res = await  this.clientService.editClient($event);
-   this.selectedClient = null;
+    const res = await this.clientService.editClient($event);
+    this.selectedClient = null;
     this.displayDialog = false;
   }
 
   confirmDelete(arg0: any) {
     console.log('confirmDelete', arg0);
   }
-
-
 
 }

@@ -3,6 +3,11 @@ import { User } from "./user.entity";
 import { Tenant } from "./tenant.entity";
 import { tenantIdConverter } from "../converters";
 
+export enum ClientType {
+    Personal = 'personal',
+    Business = 'business',
+}
+
 @Entity('clients', {
     apiPrefilter: () => {
         console.log('remult.user', remult.user);
@@ -50,8 +55,8 @@ export class Client {
     @Fields.string()
     email = '';
 
-    @Fields.string({defaultValue: () => 'personal'})
-    type = '';
+    @Fields.enum(() => ClientType, {defaultValue:() => ClientType.Personal})
+    type = ClientType.Personal;
 
     @Fields.string()
     postCode = '';

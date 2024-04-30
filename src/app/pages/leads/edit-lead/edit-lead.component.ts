@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, signal, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Lead } from '../../../../shared/entities';
 import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
@@ -18,6 +18,7 @@ export class EditLeadComponent implements OnChanges, OnInit {
   @Output() editLead = new EventEmitter<Lead>();
   @Output() cancel = new EventEmitter<void>();
   editLeadForm!: FormGroup;
+  isDisabled = signal<boolean>(false);
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.lead && changes.lead.firstChange === false) {
@@ -26,9 +27,7 @@ export class EditLeadComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    console.log('lead', this.lead);
     this.initForm(this.lead);
-
   }
 
   initForm(lead: Lead | null) {
@@ -46,6 +45,7 @@ export class EditLeadComponent implements OnChanges, OnInit {
   onSubmit() {
     if (this.editLeadForm.valid) {
       this.editLead.emit({...this.lead, ...this.editLeadForm.value});
+      this.isDisabled.update(() => true);
     }
   }
   onCancel() {
