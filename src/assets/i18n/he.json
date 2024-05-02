@@ -64,7 +64,8 @@
         "ACTIONS": "פעולות",
         "ADD_EVENT": "הוסף אירוע",
         "UPDATE_EVENT": "עדכן אירוע",
-        "EDIT_TITLE": "פרטי אירוע"
+        "EDIT_TITLE": "פרטי אירוע",
+        "CANCEL_EDIT": "ביטול"
     }
 
 }

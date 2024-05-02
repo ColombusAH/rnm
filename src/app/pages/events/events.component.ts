@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { EventStatus } from '../../../shared/enums/events.enums';
 import { EventsApiService } from '../../core/apis/events-api.service';
 import { Event } from '../../../shared/entities';
@@ -7,18 +7,20 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { EditEventsComponent } from './edit-events/edit-events.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [TableModule, TranslateModule, DialogModule, ButtonModule, DatePipe],
+  imports: [TableModule, TranslateModule, DialogModule, ButtonModule, DatePipe, EditEventsComponent],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.scss'
+  styleUrl: './events.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventsComponent {
   eventsService = inject(EventsApiService);
   events = this.eventsService.events;
-  eventStatus = EventStatus;
+  eventStatuses = this.eventsService.eventStatuses;
   displayDialog: boolean = false;
   selectedEvent: Event | null = null;
 

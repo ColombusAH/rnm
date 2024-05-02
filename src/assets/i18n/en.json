@@ -64,6 +64,7 @@
         "ACTIONS": "Actions",
         "ADD_EVENT": "Add Event",
         "UPDATE_EVENT": "Update Event",
-        "EDIT_TITLE": "Edit Details"
+        "EDIT_TITLE": "Edit Details",
+        "CANCEL_EDIT": "Cancel"
     }
 }
