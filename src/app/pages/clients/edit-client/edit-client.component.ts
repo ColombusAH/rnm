@@ -10,58 +10,64 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-client',
   standalone: true,
-  imports: [NgIf,ReactiveFormsModule, DropdownModule, ButtonModule, InputTextModule, TranslateModule ],
+  imports: [NgIf, ReactiveFormsModule, DropdownModule, ButtonModule, InputTextModule, TranslateModule],
   templateUrl: './edit-client.component.html',
   styleUrl: './edit-client.component.scss'
 })
-export class EditClientComponent implements OnChanges,  OnInit {
+export class EditClientComponent implements OnChanges, OnInit {
 
 
   @Input() types: string[] = [];
   @Input() client: Client | null = null;
 
-  @Output() editClient = new EventEmitter<Client>(); 
+  @Output() editClient = new EventEmitter<Client>();
+  @Output() cancel = new EventEmitter<void>();
 
   fb = inject(FormBuilder);
-  addClientForm:FormGroup | null = null;
+  addClientForm: FormGroup | null = null;
   isDisabled = signal<boolean>(false);
 
 
   ngOnChanges(changes: SimpleChanges): void {
-     if (changes.client && changes.client.firstChange === false) {
+    if (changes.client && changes.client.firstChange === false) {
       this.initForm(this.client);
+    }
   }
-}
 
   ngOnInit(): void {
     console.log('client', this.client);
     this.initForm(this.client);
-    
+
   }
 
   onSubmit() {
     console.log(this.addClientForm?.value);
     if (this.addClientForm?.valid) {
       this.editClient.emit(this.addClientForm?.value);
-      this.isDisabled.update(()=> true);
+      this.isDisabled.update(() => true);
     }
   }
 
+  onCancel() {
+    this.addClientForm?.reset();
+    this.cancel.emit();
+  }
 
-    initForm(client: Client | null) {
-      this.addClientForm = this.fb.group({
-        id: [client?.id || 0, []],
-        firstName: [client?.firstName || '', Validators.required],
-        lastName: [client?.lastName || '', []],
-        email: [client?.email || '', []],
-        phone: [client?.phone || '', Validators.required],
-        address: [client?.address || '', []],
-        postCode: [client?.postCode || '',[]],
-        type: [client?.type || ''],
-        notes: [client?.notes || '']
-      });
-    }
 
-   
+  initForm(client: Client | null) {
+    this.addClientForm = this.fb.group({
+      id: [client?.id || 0, []],
+      firstName: [client?.firstName || '', Validators.required],
+      lastName: [client?.lastName || '', []],
+      email: [client?.email || '', []],
+      phone: [client?.phone || '', Validators.required],
+      address: [client?.address || '', []],
+      postCode: [client?.postCode || '', []],
+      type: [client?.type || ''],
+      notes: [client?.notes || '']
+    });
+  }
+
+
 
 }

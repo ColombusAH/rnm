@@ -5,16 +5,18 @@ import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { CalendarModule } from 'primeng/calendar';
 import { CamelToSnakePipe } from '../../../pipes/camel-to-snake.pipe';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-edit-lead',
   standalone: true,
-  imports: [NgIf, NgFor, CamelToSnakePipe, UpperCasePipe, ReactiveFormsModule, TranslateModule, CalendarModule],
+  imports: [NgIf, NgFor, CamelToSnakePipe, UpperCasePipe, ReactiveFormsModule, TranslateModule, CalendarModule, DropdownModule],
   templateUrl: './edit-lead.component.html',
   styleUrl: './edit-lead.component.scss'
 })
 export class EditLeadComponent implements OnChanges, OnInit {
   @Input() lead: Lead | null = null;
+  @Input() jobTypes: string[] = [];
   @Output() editLead = new EventEmitter<Lead>();
   @Output() cancel = new EventEmitter<void>();
   editLeadForm!: FormGroup;
@@ -42,6 +44,7 @@ export class EditLeadComponent implements OnChanges, OnInit {
     });
 
   }
+  
   onSubmit() {
     if (this.editLeadForm.valid) {
       this.editLead.emit({...this.lead, ...this.editLeadForm.value});

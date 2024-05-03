@@ -8,6 +8,13 @@
         <input *ngIf="field !== 'notes'" type="text" [id]="field" [formControlName]="field" pInputText class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         <textarea *ngIf="field === 'notes'" [id]="field" [formControlName]="field" pInputTextarea rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
       </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="jobType">
+          {{ 'LEADS_PAGE.JOB_TYPE' | translate }}
+        </label>
+        <p-dropdown [options]="jobTypes" formControlName="jobType"  placeholder="Select Job"></p-dropdown>
+      </div>
   
       <div class="mb-4" *ngFor="let dateField of ['fromDate', 'toDate']; let i = index">
         <label class="block text-gray-700 text-sm font-bold mb-2" [for]="dateField">

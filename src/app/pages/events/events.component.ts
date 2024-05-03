@@ -18,11 +18,19 @@ import { EditEventsComponent } from './edit-events/edit-events.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventsComponent {
+
   eventsService = inject(EventsApiService);
   events = this.eventsService.events;
   eventStatuses = this.eventsService.eventStatuses;
+  jobTypes = this.eventsService.jobTypes;
   displayDialog: boolean = false;
   selectedEvent: Event | null = null;
+
+  onEditLead($event: Event) {
+    this.eventsService.editEvent($event);
+    this.selectedEvent = null;
+    this.displayDialog = false;
+  }
 
   confirmDelete(arg0: any) {
     throw new Error('Method not implemented.');

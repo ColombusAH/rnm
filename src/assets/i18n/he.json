@@ -12,6 +12,19 @@
     "CHOOSE_A_PASSWORD": "בחר סיסמה",
     "NO_ACCOUNT_QUESTION": "אין לך חשבון?",
     "ACCOUNT_QUESTION": "יש לך חשבון?",
+    "SUCCESS": "הצלחה",
+    "ERROR": "שגיאה",
+    "WEDDING": "חתונה",
+    "BIRTHDAY": "יום הולדת",
+    "ANNIVERSARY": "גיל",
+    "ENGAGEMENT": "אירוסין",
+    "GRADUATION": "סיום לימודים",
+    "HOLIDAY": "חג",
+    "PARTY": "מסיבה",
+    "CONFERENCE": "כנס",
+    "CORPORATE": "עסקי",
+
+    "OTHER": "אחר",
     "NAVIGATION_LINKS": {
         "HOME": "בית",
         "CLIENTS": "לקוחות",
@@ -32,7 +45,10 @@
         "NOTES": "הערות",
         "ACTIONS": "פעולות",
         "ADD_CLIENT": "הוסף לקוח",
-        "UPDATE_CLIENT": "עדכן לקוח"
+        "ADD_SUCCESS": "ההוספה בוצעה",
+        "UPDATE_CLIENT": "עדכן לקוח",
+        "UPDATE_SUCCESS": "העדכון בוצע",
+        "UPDATE_FAIL": "העדכון נכשל"
     },
     "LEADS_PAGE": {
         "EDIT_TITLE": "פרטי ליד",
@@ -45,9 +61,12 @@
         "NOTES": "הערות",
         "ACTIONS": "פעולות",
         "ADD_LEAD": "הוסף ליד",
+        "ADD_SUCCESS": "ההוספה בוצעה",
         "SAVE_EDIT": "שמור",
         "CANCEL_EDIT": "ביטול",
-        "UPDATE_LEAD": "עדכן ליד"
+        "UPDATE_LEAD": "עדכן ליד",
+        "UPDATE_SUCCESS": "העדכון בוצע",
+        "UPDATE_FAIL": "העדכון נכשל"
 
     },
     "EVENTS_PAGE": {
@@ -65,7 +84,13 @@
         "ADD_EVENT": "הוסף אירוע",
         "UPDATE_EVENT": "עדכן אירוע",
         "EDIT_TITLE": "פרטי אירוע",
-        "CANCEL_EDIT": "ביטול"
+        "CANCEL_EDIT": "ביטול",
+        "UPDATE_SUCCESS": "העדכון בוצע",
+        "UPDATE_FAIL": "העדכון נכשל",
+        "DELETE_SUCCESS": "המחיקה בוצעה",
+        "DELETE_FAIL": "המחיקה נכשלה",
+        "ADD_SUCCESS": "ההוספה בוצעה",
+        "ADD_FAIL": "ההוספה נכשלה"
     }
 
 }

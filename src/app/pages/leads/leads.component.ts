@@ -26,6 +26,7 @@ export class LeadsComponent implements OnInit {
 
   leadsService = inject(LeadsApiService);
   leads = this.leadsService.leads;
+  jobTypes = this.leadsService.jobTypes;
   displayDialog: boolean = false;
   selectedLead: Lead | null = null;
 

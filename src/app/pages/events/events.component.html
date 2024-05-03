@@ -23,7 +23,7 @@
         <tr>
           <td>{{ event.name }}</td>
           <td>{{ event.description }}</td>
-          <td>{{ event.jobType }}</td>
+          <td>{{ event.type }}</td>
           <td>{{ event.status }}</td>
           <td>{{ event.location }}</td>
           <td>{{ event.fromDate | date: 'd/M/y h:mm a' }}</td>
@@ -38,7 +38,7 @@
     </p-table>
   
     <p-dialog header="{{'EVENTS_PAGE.EDIT_TITLE' | translate}}" [(visible)]="displayDialog" (onHide)="selectedEvent = null" [modal]="true" [style]="{width: '50vw', 'min-width': '24rem'}">
-      <app-edit-events [statusOptions]="eventStatuses()"></app-edit-events>
+      <app-edit-events [jobTypes]="jobTypes()" (cancel)="displayDialog = false" [statusOptions]="eventStatuses()" [event]="selectedEvent" (editedEvent)="onEditLead($event)"></app-edit-events>
     </p-dialog>
   </div>
   

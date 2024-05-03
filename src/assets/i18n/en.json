@@ -12,6 +12,19 @@
     "CHOOSE_A_PASSWORD": "Choose a password",
     "NO_ACCOUNT_QUESTION": "Don\\'t have an account?",
     "ACCOUNT_QUESTION":"Already have an account?",
+    "SUCCESS": "Success",
+    "ERROR": "Error",
+    "WEDDING:": "Wedding",
+    "BIRTHDAY": "Birthday",
+    "ANNIVERSARY": "Anniversary",
+    "ENGAGEMENT": "Engagement",
+    "GRADUATION": "Graduation",
+    "RETIREMENT": "Retirement",
+    "HOLIDAY": "Holiday",
+    "CONFERENCE": "Conference",
+    "CORPORATE": "Corporate",
+    "PARTY": "Party",
+    "OTHER": "Other",
     "NAVIGATION_LINKS": {
         "HOME": "Home",
         "CLIENTS": "Clients",
@@ -32,7 +45,10 @@
         "NOTES":"Notes",
         "ACTIONS": "Actions",
         "ADD_CLIENT": "Add Client",
-        "UPDATE_CLIENT": "Update Client"
+        "ADD_SUCCESS": "Client added",
+        "UPDATE_CLIENT": "Update Client",
+        "UPDATE_SUCCESS": "Client updated",
+        "UPDATE_FAIL": "Client update failed"
 
     },
     "LEADS_PAGE": {
@@ -46,9 +62,12 @@
         "NOTES": "Notes",
         "ACTIONS": "Actions",
         "ADD_LEAD": "Add Lead",
+        "ADD_SUCCESS": "Lead added",
         "SAVE_EDIT": "Save",
         "CANCEL_EDIT": "Cancel",
-        "UPDATE_LEAD": "Update Lead"
+        "UPDATE_LEAD": "Update Lead",
+        "UPDATE_SUCCESS": "Lead updated",
+        "UPDATE_FAIL": "Lead update failed"
     },
     "EVENTS_PAGE": {
         "ID": "ID",
@@ -65,6 +84,13 @@
         "ADD_EVENT": "Add Event",
         "UPDATE_EVENT": "Update Event",
         "EDIT_TITLE": "Edit Details",
-        "CANCEL_EDIT": "Cancel"
+        "CANCEL_EDIT": "Cancel",
+        "UPDATE_SUCCESS": "Event updated",
+        "UPDATE_FAIL": "Event update failed",
+        "DELETE_SUCCESS": "Event deleted",
+        "DELETE_FAIL": "Event delete failed",
+        "ADD_SUCCESS": "Event added",
+        "ADD_FAIL": "Event add failed"
+
     }
 }

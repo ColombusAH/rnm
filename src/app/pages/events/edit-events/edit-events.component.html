@@ -15,6 +15,12 @@
         </label>
         <p-dropdown [options]="statusOptions()" formControlName="status"  placeholder="Select Status"></p-dropdown>
       </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="jobType">
+          {{ 'EVENTS_PAGE.JOB_TYPE' | translate }}
+        </label>
+        <p-dropdown [options]="jobTypes()" formControlName="type"  placeholder="Select Job"></p-dropdown>
+      </div>
   
       <div class="mb-4" *ngFor="let dateField of ['fromDate', 'toDate']; let i = index">
         <label class="block text-gray-700 text-sm font-bold mb-2" [for]="dateField">
@@ -24,7 +30,7 @@
       </div>
   
       <div class="flex items-center justify-between">
-        <button type="submit" pButton label="{{ 'EVENTS_PAGE.UPDATE_EVENT' | translate }}" [disabled]="editEventForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="onSubmit()"></button>
+        <button type="submit" pButton label="{{ (isNewEvent() ?  'EVENTS_PAGE.ADD_EVENT' : 'EVENTS_PAGE.UPDATE_EVENT' )| translate }}" [disabled]="editEventForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="onSubmit()"></button>
         <button type="button" pButton label="{{ 'EVENTS_PAGE.CANCEL_EDIT' | translate }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="onCancel()"></button>
       </div>
     </form>

@@ -3,6 +3,9 @@ import { Event } from '../../../shared/entities';
 import { remult } from 'remult';
 import { MessageService } from 'primeng/api';
 import { EventStatus } from '../../../shared/enums/events.enums';
+import { JobType } from '../../../shared/enums/job-type.enum';
+import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +13,14 @@ import { EventStatus } from '../../../shared/enums/events.enums';
 export class EventsApiService {
   private _events = signal<Event[]>([]);
   private _eventsStatuses = signal<EventStatus[]>(Object.values(EventStatus));
+  private _jobTypes = signal<JobType[]>(Object.values(JobType));
 
   eventsRepo = remult.repo(Event);
   messageService = inject(MessageService);
+  translateService = inject(TranslateService);
   events = this._events.asReadonly();
   eventStatuses = this._eventsStatuses.asReadonly();
+  jobTypes = this._jobTypes.asReadonly();
 
   constructor() {
     console.log('EventsApiService');
@@ -34,15 +40,24 @@ export class EventsApiService {
 
   async editEvent(event: Event) {
     const { tenantId, tenant, ...rest } = event;
-    if (!rest.id) {
-      console.log('insert')
-      const response = await this.eventsRepo.insert(rest);
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event Created' });
-      return response
-    }
-    const response = await this.eventsRepo.save(rest);
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Event Updated' });
+    const isNew = !rest.id;
+    const action = isNew ? 'insert' : 'save';
+  
+    const response = await this.eventsRepo[action](rest);
+  
+    const translationKeys = isNew ? ['EVENTS_PAGE.CREATE_SUCCESS', 'SUCCESS'] : ['EVENTS_PAGE.UPDATE_SUCCESS', 'SUCCESS'];
+    const translations = await firstValueFrom(this.translateService.get(translationKeys));
+  
+
+    this.messageService.add({
+      severity: 'success',
+      summary: translations.SUCCESS,
+      detail: translations[translationKeys[0]]
+    });
+  
+    console.log('translations', translations);
     return response;
   }
+  
 
 }

@@ -46,7 +46,7 @@
       <label class="block text-gray-700 text-sm font-bold mb-2">
         Type
       </label>
-      <p-dropdown [options]="types" optionLabel="label" formControlName="type" placeholder="Select a Type" [showClear]="true"></p-dropdown>
+      <p-dropdown [options]="types" optionLabel="label" formControlName="type" placeholder="Select a Type" [showClear]="false"></p-dropdown>
     </div>
   
     <div class="mb-4">
@@ -58,6 +58,7 @@
   
     <div class="flex items-center justify-between">
       <button pButton type="submit" [disabled]="addClientForm.invalid || isDisabled()" [label]="client ? 'Update Client': 'Add Client'" (click)="onSubmit()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></button>
+      <button pButton type="button" label="Cancel" (click)="onCancel()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"></button>
     </div>
 </form>
 </ng-container>

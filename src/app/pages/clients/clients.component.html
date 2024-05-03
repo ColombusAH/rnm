@@ -8,7 +8,6 @@
     <p-table dataKey="id" [value]="clients()">
       <ng-template pTemplate="header">
         <tr>
-          <th>{{'CLIENTS_PAGE.ID' | translate}}</th>
           <th>{{'CLIENTS_PAGE.FIRST_NAME' | translate}}</th>
           <th>{{'CLIENTS_PAGE.LAST_NAME'| translate}}</th>
           <th>{{'CLIENTS_PAGE.EMAIL' | translate}}</th>
@@ -19,7 +18,6 @@
       </ng-template>
       <ng-template pTemplate="body" let-client>
         <tr>
-          <td>{{ client.id }}</td>
           <td>{{ client.firstName }}</td>
           <td>{{ client.lastName }}</td>
           <td>{{ client.email }}</td>
@@ -34,7 +32,7 @@
     </p-table>
   
     <p-dialog header="Client Details" [(visible)]="displayDialog" (onHide)="selectedClient = null" [modal]="true" [style]="{width: '50vw', 'min-width': '24rem'}">
-        <app-edit-client (editClient)="onEditClient($event)" [client]="selectedClient"></app-edit-client>
+        <app-edit-client (editClient)="onEditClient($event)" (cancel)="displayDialog = false" [client]="selectedClient"></app-edit-client>
     </p-dialog>
   </div>
   

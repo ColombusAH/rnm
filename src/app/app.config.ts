@@ -20,14 +20,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 export const DIRECTION_TOKEN = new InjectionToken<string>('BodyDirection');
 //better name for this function is
 export function BodyDirection(translateService: TranslateService) {
-
-  console.log('BodyDirection');
   registerLocaleData(localeEn);
   registerLocaleData(localHe);
   const prefLang = localStorage.getItem('lang') || 'he';
-  // const langDirection = prefLang === 'he' ? 'rtl' : 'ltr';
-
-  // document.body.dir = langDirection;
   const direction = signal('');
   translateService.onLangChange.subscribe((event) => {
     if (event.lang === 'he') {
