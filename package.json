@@ -7,6 +7,7 @@
     "start-dev": "ng serve --proxy-config proxy.conf.json",
     "start": "node dist/server/",
     "build": "ng build && tsc -p tsconfig.server.json",
+    "build-dev": "ng build --configuration development && tsc -p tsconfig.server.json --proxy-config proxy.conf.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -20,6 +21,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@angular/service-worker": "^17.3.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@types/pg": "^8.11.5",
