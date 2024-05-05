@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { remult } from 'remult';
-import { Client } from '../../../shared/entities/client.entity';
+import { Client, ClientType } from '../../../shared/entities/client.entity';
 import { MessageService } from 'primeng/api';
 import { firstValueFrom } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,10 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ClientsApiService {
   private _clients = signal<Client[]>([]);
+  private _clientsTypes = signal<ClientType[]>(Object.values(ClientType));
   clientRepo = remult.repo(Client);
   messageService = inject(MessageService);
   translateService = inject(TranslateService);
   clients = this._clients.asReadonly();
+  clientTypes = this._clientsTypes.asReadonly();
 
   constructor() {
     this.clientRepo.liveQuery().subscribe((data) =>{

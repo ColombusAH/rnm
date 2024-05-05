@@ -12,6 +12,7 @@
           <th>{{'LEADS_PAGE.JOB_TYPE'| translate}}</th>
           <th>{{'LEADS_PAGE.SOURCE' | translate}}</th>
           <th>{{'LEADS_PAGE.LOCATION' | translate}}</th>
+          <th>{{'LEADS_PAGE.STATUS' | translate}}</th>
           <th>{{'LEADS_PAGE.FROM_DATE' | translate}}</th>
           <th>{{'LEADS_PAGE.TO_DATE' | translate}}</th>
           <th>{{'LEADS_PAGE.NOTES' | translate}}</th>
@@ -24,6 +25,7 @@
           <td>{{ lead.jobType }}</td>
           <td>{{ lead.source }}</td>
           <td>{{ lead.location }}</td>
+          <td>{{lead.status}}</td>
           <td>{{ lead.fromDate | date: 'd/M/y h:mm a' }}</td>
           <td>{{ lead.toDate | date: 'd/M/y h:mm a' }}</td>
           <td>{{ lead.notes }}</td>

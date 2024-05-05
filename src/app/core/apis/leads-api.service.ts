@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { firstValueFrom } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { JobType } from '../../../shared/enums/job-type.enum';
+import { LeadSource, LeadStatus } from '../../../shared/enums/lead-source.enums';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,15 @@ export class LeadsApiService {
 
   private _leads = signal<Lead[]>([]);
   private _jobTypes = signal<JobType[]>(Object.values(JobType));
+  private _leadsSources = signal<LeadSource[]>(Object.values(LeadSource));
+  private _leadStatuses = signal<LeadStatus[]>(Object.values(LeadStatus));
   leadRepo = remult.repo(Lead);
   messageService = inject(MessageService);
   translateService = inject(TranslateService);
   leads = this._leads.asReadonly();
   jobTypes = this._jobTypes.asReadonly();
+  leadSources = this._leadsSources.asReadonly();
+  leadStatuses = this._leadStatuses.asReadonly();
 
   constructor() {
     this.leadRepo.liveQuery().subscribe((data) =>{

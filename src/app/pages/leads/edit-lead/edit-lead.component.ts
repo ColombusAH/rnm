@@ -17,6 +17,8 @@ import { DropdownModule } from 'primeng/dropdown';
 export class EditLeadComponent implements OnChanges, OnInit {
   @Input() lead: Lead | null = null;
   @Input() jobTypes: string[] = [];
+  @Input() leadSources: string[] = [];
+  @Input() leadStatuses: string[] = [];
   @Output() editLead = new EventEmitter<Lead>();
   @Output() cancel = new EventEmitter<void>();
   editLeadForm!: FormGroup;
@@ -37,6 +39,7 @@ export class EditLeadComponent implements OnChanges, OnInit {
       name: new FormControl(lead?.name, [Validators.required]),
       jobType: new FormControl(lead?.jobType, [Validators.required]),
       source: new FormControl(lead?.source, [Validators.required]),
+      status: new FormControl(lead?.status, [Validators.required]),
       location: new FormControl(lead?.location, [Validators.required]),
       fromDate: new FormControl(lead?.fromDate, [Validators.required]),
       toDate: new FormControl(lead?.toDate, [Validators.required]),

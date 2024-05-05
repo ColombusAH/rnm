@@ -55,6 +55,7 @@
         "NAME": "שם",
         "JOB_TYPE": "סוג עבודה",
         "SOURCE": "מקור",
+        "STATUS": "סטטוס",
         "LOCATION": "מיקום",
         "FROM_DATE": "מתאריך",
         "TO_DATE": "עד תאריך",

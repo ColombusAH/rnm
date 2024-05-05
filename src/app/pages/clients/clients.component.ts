@@ -24,6 +24,7 @@ export class ClientsComponent implements OnInit {
 
   clientService = inject(ClientsApiService);
   clients = this.clientService.clients;
+  clientTypes = this.clientService.clientTypes;
   selectedClient: Client | null = null;
   displayDialog: boolean = false;
 

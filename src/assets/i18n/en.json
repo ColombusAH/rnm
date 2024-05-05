@@ -56,6 +56,7 @@
         "NAME": "Name",
         "JOB_TYPE": "Job Type",
         "SOURCE": "Source",
+        "STATUS": "Status",
         "LOCATION": "Location",
         "FROM_DATE": "From Date",
         "TO_DATE": "To Date",

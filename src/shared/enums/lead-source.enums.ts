@@ -2,6 +2,8 @@
 export enum LeadSource {
     Website = 'website',
     Facebook = 'facebook',
+    Google = 'google',
+    YouTube = 'youtube',
     Instagram = 'instagram',
     Twitter = 'twitter',
     Referral = 'referral',
