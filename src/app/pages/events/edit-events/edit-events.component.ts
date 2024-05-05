@@ -1,4 +1,4 @@
-import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { Component, input, effect, signal, inject, output, computed } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,7 +15,7 @@ import { TranslateArrayPipe } from '../../../pipes/translate-array.pipe';
 @Component({
   selector: 'app-edit-events',
   standalone: true,
-  imports: [NgIf, NgFor, CamelToSnakePipe, UpperCasePipe, TranslateArrayPipe,InputTextModule, ReactiveFormsModule, TranslateModule, CalendarModule, ButtonModule, DropdownModule],
+  imports: [CamelToSnakePipe, UpperCasePipe, TranslateArrayPipe, InputTextModule, ReactiveFormsModule, TranslateModule, CalendarModule, ButtonModule, DropdownModule],
   templateUrl: './edit-events.component.html',
   styleUrl: './edit-events.component.scss'
 })

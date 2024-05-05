@@ -1,28 +1,26 @@
 <div class="bg-gray-800 text-white p-4">
-    <div class="flex justify-between items-center">
-      <button  class="lg:hidden" (click)="toggleSidebar()">
-        <i class="pi pi-bars"></i>
-      </button>
-      <div>
-        <span class="text-xl">MyApp</span>
-        <app-toggle-lang [lang]="currentLang" class="mx-6" (click)="toggleLang()"></app-toggle-lang>
-      </div>
-      <div class="hidden lg:flex space-x-4">
-        <a routerLink="/" class="hover:underline mx-1">{{'DASHBOARD' | translate}}</a>
-        <a [routerLink]="'clients'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.CLIENTS' | translate}}</a>
-        <a [routerLink]="'events'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.EVENTS' | translate}}</a>
-        <a [routerLink]="'leads'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.LEADS' | translate}}</a>
-      </div>    
-      <div>
-        <ng-container *ngIf="isLoggedIn; else loginTemplate">
-          <i class="pi pi-user"></i>
-        </ng-container>
-        <ng-template #loginTemplate>
-          <button routerLink="login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            {{'LOGIN' | translate}}
-          </button>
-        </ng-template>
-      </div>
+  <div class="flex justify-between items-center">
+    <button  class="lg:hidden" (click)="toggleSidebar()">
+      <i class="pi pi-bars"></i>
+    </button>
+    <div>
+      <span class="text-xl">MyApp</span>
+      <app-toggle-lang [lang]="currentLang" class="mx-6" (click)="toggleLang()"></app-toggle-lang>
+    </div>
+    <div class="hidden lg:flex space-x-4">
+      <a routerLink="/" class="hover:underline mx-1">{{'DASHBOARD' | translate}}</a>
+      <a [routerLink]="'clients'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.CLIENTS' | translate}}</a>
+      <a [routerLink]="'events'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.EVENTS' | translate}}</a>
+      <a [routerLink]="'leads'" class="hover:underline mx-1">{{'NAVIGATION_LINKS.LEADS' | translate}}</a>
+    </div>
+    <div>
+      @if (isLoggedIn()) {
+        <i class="pi pi-user"></i>
+      } @else {
+        <button routerLink="login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          {{'LOGIN' | translate}}
+        </button>
+      }
     </div>
   </div>
-  
+</div>

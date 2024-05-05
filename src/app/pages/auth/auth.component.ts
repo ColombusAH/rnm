@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { map, tap } from 'rxjs';
-import { NgIf } from '@angular/common';
+
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../core/services/auth.service';
@@ -13,7 +13,7 @@ import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [NgIf,InputTextModule, ButtonModule, RippleModule, TranslateModule,RouterModule, ReactiveFormsModule],
+  imports: [InputTextModule, ButtonModule, RippleModule, TranslateModule, RouterModule, ReactiveFormsModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'
 })

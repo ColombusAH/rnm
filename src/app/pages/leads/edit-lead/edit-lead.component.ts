@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, signal, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Lead } from '../../../../shared/entities';
-import { NgFor, NgIf, UpperCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { CalendarModule } from 'primeng/calendar';
 import { CamelToSnakePipe } from '../../../pipes/camel-to-snake.pipe';
@@ -10,7 +10,7 @@ import { DropdownModule } from 'primeng/dropdown';
 @Component({
   selector: 'app-edit-lead',
   standalone: true,
-  imports: [NgIf, NgFor, CamelToSnakePipe, UpperCasePipe, ReactiveFormsModule, TranslateModule, CalendarModule, DropdownModule],
+  imports: [CamelToSnakePipe, UpperCasePipe, ReactiveFormsModule, TranslateModule, CalendarModule, DropdownModule],
   templateUrl: './edit-lead.component.html',
   styleUrl: './edit-lead.component.scss'
 })

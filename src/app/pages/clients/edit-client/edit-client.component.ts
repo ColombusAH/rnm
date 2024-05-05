@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+
 import { Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, signal, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-client',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, DropdownModule, ButtonModule, InputTextModule, TranslateModule],
+  imports: [ReactiveFormsModule, DropdownModule, ButtonModule, InputTextModule, TranslateModule],
   templateUrl: './edit-client.component.html',
   styleUrl: './edit-client.component.scss'
 })
